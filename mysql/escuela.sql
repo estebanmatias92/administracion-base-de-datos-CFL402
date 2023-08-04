@@ -70,3 +70,15 @@ SHOW DATABASES;
 -- Cambiar de base de datos
 USE appsalon;
 
+
+-- Eliminar tabla si existe
+DROP TABLE IF EXISTS servicios;
+
+-- Crear tabla si NO existe
+CREATE TABLE IF NOT EXISTS servicios(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(60) NOT NULL UNIQUE,
+    precio DECIMAL(7, 3) NOT NULL
+);
+
+
