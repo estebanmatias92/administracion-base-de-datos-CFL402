@@ -56,3 +56,17 @@ WHERE id = 2;
 
 -- Mostrar los cambios
 SELECT * FROM alumnos;
+
+
+-- Eliminar base de datos si existe
+DROP DATABASE IF EXISTS appsalon;
+
+-- Crear base de datos si NO existe
+CREATE DATABASE IF NOT EXISTS appsalon;
+
+-- Mostrar las DBs de nuevo
+SHOW DATABASES;
+
+-- Cambiar de base de datos
+USE appsalon;
+
