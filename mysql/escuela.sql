@@ -83,3 +83,22 @@ CREATE TABLE IF NOT EXISTS servicios(
 
 -- Ver el esquema de la tabla servicios
 DESCRIBE servicios;
+
+
+-- Mostrar todos los registros en la tabla servicios
+SELECT * FROM servicios
+
+-- Crear datos
+INSERT INTO servicios(nombre, precio)
+VALUES 
+("Corte de cabello masculino", 500.000),
+("Corte de cabello femenino", 600.000),
+("Coloración de cabello", 800.000),
+("Lavado y peinado", 350.000),
+("Tratamiento de keratina", 1200.000),
+("Depilación facial", 300.000),
+("Manicure y Pedicure", 700.000);
+
+-- Mostrar todos los registros en la tabla servicios
+SELECT * FROM servicios
+
