@@ -86,7 +86,7 @@ DESCRIBE servicios;
 
 
 -- Mostrar todos los registros en la tabla servicios
-SELECT * FROM servicios
+SELECT * FROM servicios;
 
 -- Crear datos
 INSERT INTO servicios(nombre, precio)
@@ -100,5 +100,5 @@ VALUES
 ("Manicure y Pedicure", 700.000);
 
 -- Mostrar todos los registros en la tabla servicios
-SELECT * FROM servicios
+SELECT * FROM servicios;
 
