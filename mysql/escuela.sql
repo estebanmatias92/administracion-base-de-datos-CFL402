@@ -81,4 +81,5 @@ CREATE TABLE IF NOT EXISTS servicios(
     precio DECIMAL(7, 3) NOT NULL
 );
 
-
+-- Ver el esquema de la tabla servicios
+DESCRIBE servicios;
