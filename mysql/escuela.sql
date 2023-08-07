@@ -126,7 +126,8 @@ DESCRIBE servicios;
 
 -- Modificamos el nombre del campo recien creado
 ALTER TABLE servicios
-CHANGE descripcion observaciones VARCHAR(255) DEFAULT "No hay observaciones.";
+CHANGE 
+descripcion observaciones VARCHAR(255) DEFAULT "No hay observaciones.";
 
 -- Mostrar como quedo la tabla tras la modificacion del campo "descripcion"
 DESCRIBE servicios;
