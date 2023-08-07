@@ -6,6 +6,8 @@ SHOW DATABASES;
 USE escuela;
 
 
+--------------------------------------------------------------------------------
+
 -- Mostrar las tablas que contiene
 SHOW TABLES;
 
@@ -27,6 +29,8 @@ CREATE TABLE IF NOT EXISTS alumnos (
 DESCRIBE alumnos;
 
 
+--------------------------------------------------------------------------------
+
 -- Crear registros
 INSERT INTO alumnos(nombre, dni, direccion, telefono, email, curso) 
 VALUES 
@@ -40,6 +44,8 @@ VALUES
 -- Mostrar los cambios
 SELECT * FROM alumnos;
 
+
+--------------------------------------------------------------------------------
 
 -- Borrar un registro
 DELETE FROM alumnos 
@@ -58,6 +64,8 @@ WHERE id = 2;
 SELECT * FROM alumnos;
 
 
+--------------------------------------------------------------------------------
+
 -- Eliminar base de datos si existe
 DROP DATABASE IF EXISTS appsalon;
 
@@ -70,6 +78,8 @@ SHOW DATABASES;
 -- Cambiar de base de datos
 USE appsalon;
 
+
+--------------------------------------------------------------------------------
 
 -- Eliminar tabla si existe
 DROP TABLE IF EXISTS servicios;
@@ -84,9 +94,9 @@ CREATE TABLE IF NOT EXISTS servicios(
 -- Ver el esquema de la tabla servicios
 DESCRIBE servicios;
 
-
 -- Mostrar todos los registros en la tabla servicios
 SELECT * FROM servicios;
+
 
 -- Crear datos
 INSERT INTO servicios(nombre, precio)
@@ -102,11 +112,13 @@ VALUES
 -- Mostrar todos los registros en la tabla servicios
 SELECT * FROM servicios;
 
+
 -- Eliminar el servicio "Manicure y Pedicure" con ID 7
 DELETE FROM servicios WHERE id = 7;
 
 -- Mostrar todos los registros en la tabla servicios
 SELECT * FROM servicios;
+
 
 -- Actualizar el "precio" de "Corte de cabello masculino" (con id 1)
 UPDATE servicios
@@ -116,6 +128,9 @@ WHERE id = 1;
 -- Mostrar todos los registros en la tabla servicios
 SELECT * FROM servicios;
 
+
+--------------------------------------------------------------------------------
+
 -- Alteramos/modificamos la estructura de la tabla, agregando una seccion nueva (campo)
 ALTER TABLE servicios
 ADD 
@@ -123,6 +138,7 @@ descripcion VARCHAR(255) DEFAULT "";
 
 -- Mostrar como queda la estructura con el campo nuevo
 DESCRIBE servicios;
+
 
 -- Modificamos el nombre del campo recien creado
 ALTER TABLE servicios
@@ -135,7 +151,11 @@ DESCRIBE servicios;
 -- Mostrar todos los registros y campos
 SELECT * FROM servicios;
 
+
 -- Probar creando un nuevo "servicio" y utilizar el nuevo campo
 INSERT INTO servicios(nombre, precio, observaciones)
 VALUES 
 ("Manicure y Pedicure", 700.000, "Esta es una observacion apropiada para este servicio!");
+
+-- Mostrar todos los registros y campos
+SELECT * FROM servicios;
