@@ -85,7 +85,7 @@ USE appsalon;
 DROP TABLE IF EXISTS servicios;
 
 -- Crear tabla si NO existe
-CREATE TABLE IF NOT EXISTS servicios(
+CREATE TABLE IF NOT EXISTS servicios (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(60) NOT NULL UNIQUE,
     precio DECIMAL(7, 3) NOT NULL
@@ -159,3 +159,96 @@ VALUES
 
 -- Mostrar todos los registros y campos
 SELECT * FROM servicios;
+
+
+--------------------------------------------------------------------------------
+-- Crear mas tablas y relaciones
+
+-- Eliminar tabla de clientes (si existe)
+DROP TABLE IF EXISTS clientes;
+
+-- Tabla de clientes
+CREATE TABLE IF NOT EXISTS clientes (
+    id INT AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    telefono VARCHAR(15),
+    email VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_clientes PRIMARY KEY (id),
+    CONSTRAINT UQ_email UNIQUE (email)
+);
+
+-- Eliminar tabla de citas (si existe)
+DROP TABLE IF EXISTS citas;
+
+-- Tabla de citas
+CREATE TABLE IF NOT EXISTS citas (
+    id INT AUTO_INCREMENT,
+    fecha DATE NOT NULL DEFAULT "1997-08-29",
+    hora TIME NOT NULL DEFAULT "22:04:00",
+    cliente_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
+
+-- Eliminar tabla de citas_servicios (si existe)
+DROP TABLE IF EXISTS citas_servicios;
+
+-- Tabla de citas_servicios
+CREATE TABLE IF NOT EXISTS citas_servicios (
+    id INT AUTO_INCREMENT,
+    cita_id INT NOT NULL,
+    servicio_id INT NOT NULL,
+    CONSTRAINT PK_citas_servicios PRIMARY KEY (id),
+    CONSTRAINT FK_citas_servicios_citas FOREIGN KEY (cita_id) REFERENCES citas(id),
+    CONSTRAINT FK_citas_servicios_servicios FOREIGN KEY (servicio_id) REFERENCES servicios(id)
+);
+
+
+-- Llenar tabla clientes
+INSERT INTO clientes (nombre, apellido, telefono, email) VALUES 
+('Juan', 'Perez', '1234567890', 'juan.perez@email.com'),
+('Maria', 'Gomez', '0987654321', 'maria.gomez@email.com'),
+('Carlos', 'Diaz', '1122334455', 'carlos.diaz@email.com');
+
+-- Llenar tabla citas
+INSERT INTO citas (fecha, hora, cliente_id) 
+VALUES 
+('2023-09-01', '10:00:00', 3),
+('2023-09-02', '14:00:00', 1),
+('2023-09-03', '16:00:00', 2),
+('2023-09-04', '09:00:00', 2);
+
+-- Llenar tabla citas_servicios
+INSERT INTO citas_servicios (cita_id, servicio_id) 
+VALUES 
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(3, 6),
+(4, 8);
+
+
+-- Mostrar todas las tablas
+SHOW TABLES;
+
+-- Ver schema (esquema) tabla servicios
+DESCRIBE servicios;
+-- Ver schema (esquema) tabla clientes
+DESCRIBE clientes;
+-- Ver schema (esquema) tabla citas
+DESCRIBE citas;
+-- Ver schema (esquema) tabla citas_servicios
+DESCRIBE citas_servicios;
+
+
+-- Mostrar todos los registros de la tabla servicios
+SELECT * FROM servicios;
+-- Mostrar todos los registros de la tabla clientes
+SELECT * FROM clientes;
+-- Mostrar todos los registros de la tabla citas
+SELECT * FROM citas;
+-- Mostrar todos los registros de la tabla citas_servicios
+SELECT * FROM citas_servicios;
