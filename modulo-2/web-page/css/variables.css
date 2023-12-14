@@ -1,0 +1,27 @@
+:root {
+    --primary-color: #f8f1e4;
+    --secondary-color: #00b6ee;
+    --dark-color: #04192c;
+}
+
+main {
+    font-family: "Montserrat", sans-serif;
+    overflow: hidden;
+}
+
+.text-serif {
+    font-family: "DM Serif Display", serif;
+}
+
+/* Reset Link Styles */
+a {
+    text-decoration: none;
+    color: inherit; /* or set to a specific color */
+}
+
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit; /* or set to a different color */
+}

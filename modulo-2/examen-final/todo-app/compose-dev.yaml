@@ -1,0 +1,32 @@
+services:
+  web:
+    entrypoint:
+      - sleep
+      - infinity
+    build:
+      context: ./app
+      target: development
+    init: true
+    environment:
+      - DB_HOST=db
+      - DB_NAME=todo_app
+      - DB_USER=user
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+      - ./app:/com.docker.devenvironments.code/app
+      - ./app:/var/www/html
+
+  db:
+    environment:
+      - MYSQL_DATABASE=todo_app
+      - MYSQL_USER=user
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+secrets:
+  db-root-pass:
+    file: ./db/db-root-pass.example.txt
+  db-user-pass:
+    file: ./db/db-user-pass.example.txt

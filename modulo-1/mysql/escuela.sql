@@ -252,3 +252,5 @@ SELECT * FROM clientes;
 SELECT * FROM citas;
 -- Mostrar todos los registros de la tabla citas_servicios
 SELECT * FROM citas_servicios;
+
+

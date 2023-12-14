@@ -1,0 +1,14 @@
+services:
+  web:
+    restart: always
+
+  db:
+    restart: always
+    ports:
+      - "3306:3306"
+
+secrets:
+  db-root-pass:
+    file: ./db/db-root-pass.txt
+  db-user-pass:
+    file: ./db/db-user-pass.txt
